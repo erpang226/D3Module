@@ -1,0 +1,17 @@
+name: app1
+log:
+  level: "4"         # 日志级别
+  logRotate:
+#    fileName: "/home/syc/service.log" # 日志文件名
+    maxSize: 10         # 日志文件最大大小（MB）
+    maxBackups: 3       # 保留的日志文件数量
+    maxAge: 7           # 日志文件最长存活时间（天）
+    compress: true      # 是否压缩日志文件
+dataBase:
+  driverName: sqlite3
+  dbName: default
+  dataSource: './app.db'
+admin:
+  name: admin
+  enable: true
+  port: "8080"

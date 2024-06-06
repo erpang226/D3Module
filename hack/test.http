@@ -1,0 +1,172 @@
+
+
+### 管理员登录
+POST http://localhost:8080/admin/login
+Content-Type: application/json
+Authorization: dev
+
+{
+  "username": "admin",
+  "password": "123456"
+}
+
+### 获取模块配置列表
+GET http://localhost:8080/admin/test
+Authorization: dev
+
+
+### 根据名称获取模块信息
+GET http://localhost:8080/admin/test/Dmp
+Authorization: dev
+
+
+
+### 创建模块，并运行
+POST http://localhost:8080/admin/test/mqtt
+Content-Type: application/json
+Authorization: dev
+
+{
+  "enable": true,
+  "name": "test-mqtt-client",
+  "host": "localhost",
+  "port": "1883",
+  "clientId": "test-mqtt-client",
+  "dataUploadTopic": "/data",
+  "user": "admin",
+  "passwd": "123456"
+}
+
+
+### 启动模块
+POST http://localhost:8080/admin/test/mqtt/GEWUDMP/start
+Authorization: dev
+
+### 启动模块
+POST http://localhost:8080/admin/test/mqtt/S7_ETHERNET_2/start
+Authorization: dev
+
+### 停止并删除模块
+DELETE http://localhost:8080/admin/test/mqtt/S7_ETHERNET_1
+Authorization: dev
+
+### 停止并删除模块
+DELETE http://localhost:8080/admin/test/mqtt/S7_ETHERNET_2
+Authorization: dev
+
+
+### 模拟南向设备上报数据
+POST http://localhost:8080/admin/test/mqtt/pub
+Content-Type: application/json
+Authorization: dev
+
+{
+  "modelName": "test-mqtt-client",
+  "data": {
+    "value1": 123,
+    "value2": "33"
+  }
+}
+
+
+
+### 模拟南向设备上报数据
+POST http://localhost:8080/admin/equipment/createEquipment
+Content-Type: application/json
+Authorization: dev
+
+{
+  "name": "设备1",
+  "uuid": "e0d9334b066b40419cd95d755d264592",
+  "groupId": 0,
+  "manufacturer": "西门子",
+  "type": "1200",
+  "plugin": "s7",
+  "serialNum": "",
+  "description": "",
+  "plcType": "1200",
+  "ip": "192.168.21.159",
+  "port": 102,
+  "pduMax": "960",
+  "linkAddr": "pc",
+  "rack": 0,
+  "slot": 0,
+  "localTsap": "",
+  "remoteTsap": "",
+  "opcdaType": "",
+  "properties": [
+    {
+      "name": "plcType",
+      "dataType": "string",
+      "value": "1200"
+    },
+    {
+      "name": "ip",
+      "dataType": "string",
+      "value": "192.168.21.159"
+    },
+    {
+      "name": "port",
+      "dataType": "string",
+      "value": "102"
+    },
+    {
+      "name": "pduMax",
+      "dataType": "string",
+      "value": "960"
+    },
+    {
+      "name": "linkAddr",
+      "dataType": "string",
+      "value": "pc"
+    },
+    {
+      "name": "rack",
+      "dataType": "string",
+      "value": "0"
+    },
+    {
+      "name": "slot",
+      "dataType": "string",
+      "value": "0"
+    },
+    {
+      "name": "localTsap",
+      "dataType": "string",
+      "value": ""
+    },
+    {
+      "name": "remoteTsap",
+      "dataType": "string",
+      "value": ""
+    }
+  ]
+}
+
+###
+DELETE http://localhost:8080/admin/point/deletePointGroupByIds
+Content-Type: application/json
+Authorization: dev
+
+{
+  "id": [
+    220
+  ],
+  "channelId": 220
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
