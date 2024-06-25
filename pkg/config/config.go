@@ -23,7 +23,7 @@ type DataBase struct {
 	// default "default"
 	DbName string `yaml:"dbName" json:"dbName"`
 	// DataSource indicates the data source path
-	// default "/var/lib/gateway/app.db"
+	// default "/var/lib/app/app.db"
 	DataSource string `yaml:"dataSource" json:"dataSource"`
 }
 
@@ -55,7 +55,7 @@ type KafkaClientConfig struct {
 	AutoReconnect bool   `yaml:"autoReconnect" json:"autoReconnect"`
 }
 
-// NewDefaultAppConfig new default gateway config
+// NewDefaultAppConfig new default app config
 func NewDefaultAppConfig() *AppConfig {
 	config := &AppConfig{}
 	return config
@@ -64,7 +64,7 @@ func NewDefaultAppConfig() *AppConfig {
 // Parse parse config from file
 func (c *AppConfig) Parse(filename string) error {
 	if !FileIsExist(filename) {
-		filename = "./config.yaml"
+		filename = "./app.yaml"
 	}
 	data, err := os.ReadFile(filename)
 	if err != nil {

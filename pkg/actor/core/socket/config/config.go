@@ -31,7 +31,7 @@ func init() {
 	var filepath string
 	filepath = os.Getenv("SOCKET_MODULE_CONFIG")
 	if filepath == "" {
-		filepath = "/etc/soft-gateway/config/socket_module.yaml"
+		filepath = "/etc/app/config/socket_module.yaml"
 		if _, err := os.Stat(filepath); err != nil {
 			return
 		}

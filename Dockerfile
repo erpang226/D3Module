@@ -1,12 +1,12 @@
 
 FROM ubuntu:22.04
 
-RUN mkdir -p /app/gateway/config
+RUN mkdir -p /app/config
 
-COPY ./bin/gateway /app/gateway/
-COPY ./config.yaml /app/gateway/config/
-COPY ./bin/app.db /app/gateway/
+COPY ./bin/app /app/
+COPY ./app.yaml /app/config/
+COPY ./bin/app.db /app/
 
-WORKDIR /app/gateway
+WORKDIR /app
 
-ENTRYPOINT ["/app/gateway/gateway"]
+ENTRYPOINT ["/app/app"]

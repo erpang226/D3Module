@@ -17,10 +17,10 @@ import (
 	"k8s.io/klog/v2"
 )
 
-// NewGatewayCommand create gateway cmd
+// NewGatewayCommand create app cmd
 func NewGatewayCommand() *cobra.Command {
-	gatewayOptions := options.InitGatewayOptions(options.ConfigPath)
-	c, err := gatewayOptions.Config()
+	appOptions := options.InitGatewayOptions(options.ConfigPath)
+	c, err := appOptions.Config()
 	if err != nil {
 		panic(err)
 	}
@@ -36,8 +36,8 @@ func NewGatewayCommand() *cobra.Command {
 	core.RegisterCoreDBTable()
 	dbm.InitDBConfig(c.DataBase.DriverName, c.DataBase.DbName, c.DataBase.DataSource)
 	cmd := &cobra.Command{
-		Use:  "gateway",
-		Long: `China Unicom soft gateway...`,
+		Use:  "app",
+		Long: `D3Module app...`,
 		Run: func(cmd *cobra.Command, args []string) {
 			err := environmentCheck(false)
 			if err != nil {
@@ -50,7 +50,7 @@ func NewGatewayCommand() *cobra.Command {
 	}
 
 	cmd.Flags().StringVar(&options.ConfigPath, "config", global.DefaultConfigDir+global.DefaultConfigFile,
-		fmt.Sprintf("gateway config file path, the default value is %s", global.DefaultConfigDir+global.DefaultConfigFile))
+		fmt.Sprintf("app config file path, the default value is %s", global.DefaultConfigDir+global.DefaultConfigFile))
 	return cmd
 }
 

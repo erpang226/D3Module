@@ -12,12 +12,12 @@ type GatewayOptions struct {
 
 var ConfigPath string
 
-var gatewayOptions *GatewayOptions
+var appOptions *GatewayOptions
 
 var appConfig *config.AppConfig
 
 func GetGatewayOptions() *GatewayOptions {
-	return gatewayOptions
+	return appOptions
 }
 func GetAppConfig() *config.AppConfig {
 	return appConfig
@@ -28,12 +28,12 @@ func SetAppConfig(c *config.AppConfig) {
 
 func InitGatewayOptions(configFile string) *GatewayOptions {
 	if len(configFile) == 0 {
-		configFile = path.Join(global.DefaultConfigDir, "config.yaml")
+		configFile = path.Join(global.DefaultConfigDir, "app.yaml")
 	}
-	gatewayOptions = &GatewayOptions{
+	appOptions = &GatewayOptions{
 		ConfigFile: configFile,
 	}
-	return gatewayOptions
+	return appOptions
 }
 
 func (o *GatewayOptions) Flags() {

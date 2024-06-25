@@ -1,6 +1,6 @@
 package global
 
 const (
-	DefaultConfigDir  = "/app/gateway/config/"
-	DefaultConfigFile = "config.yaml"
+	DefaultConfigDir  = "/app/config/"
+	DefaultConfigFile = "app.yaml"
 )
